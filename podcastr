@@ -3,12 +3,14 @@ import feedparser, os, errno
 import urllib
 
 def mkdir(path):
-    try:
-        os.makedirs(path)
-    except OSError as exc: #
-        if exc.errno == errno.EEXIST:
-            pass
-        else: raise
+  try:
+    os.makedirs(path)
+  except OSError as exc: 
+    #
+    if exc.errno == errno.EEXIST:
+      pass
+    else:
+      raise
 
 # Config
 podcastfolder = '/mnt/Docs/Music'
@@ -18,13 +20,15 @@ podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.
 # /Config
 
 for key, value in podcasts.items():
-	
-	mkdir(podcastfolder + "/" + key)
-	podcast = feedparser.parse(value)
-	url = podcast['entries'][0]['enclosures'][0]['href']
-	filename = url.split('/')[-1] # get last part of list, the file name
-	fullpath = podcastfolder + "/" + key + "/" + filename
-	
-	if os.path.isfile(fullpath) == False:
-		print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
-		urllib.urlretrieve(url, fullpath)
+
+  mkdir(podcastfolder + "/" + key)
+  podcast = feedparser.parse(value)
+  url = podcast['entries'][0]['enclosures'][0]['href']
+  filename = url.split('/')[-1] # get last part of list, the file name
+  fullpath = podcastfolder + "/" + key + "/" + filename
+
+  if os.path.isfile(fullpath) == False:
+    print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
+    urllib.urlretrieve(url, fullpath)
+  elif os.path.isfile(fullpath) == True:
+    print podcast['feed']['title'] + " is up to date."
