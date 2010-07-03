@@ -18,9 +18,13 @@ podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.
 # /Config
 
 for key, value in podcasts.items():
+	
 	mkdir(podcastfolder + "/" + key)
 	podcast = feedparser.parse(value)
 	url = podcast['entries'][0]['enclosures'][0]['href']
 	filename = url.split('/')[-1] # get last part of list, the file name
-	if os.path.isfile(podcastfolder + "/" + key + "/" + filename) == False:
-		urllib.urlretrieve(url, podcastfolder + "/" + key + "/" + filename)
+	fullpath = podcastfolder + "/" + key + "/" + filename
+	
+	if os.path.isfile(fullpath) == False:
+		print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
+		urllib.urlretrieve(url, fullpath)
