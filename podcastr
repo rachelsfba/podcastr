@@ -1,0 +1,26 @@
+#!/usr/bin/python
+import feedparser, os, errno
+import urllib
+
+def mkdir(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: #
+        if exc.errno == errno.EEXIST:
+            pass
+        else: raise
+
+# Config
+podcastfolder = '/mnt/Docs/Music'
+podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.rss',
+			'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss', 
+			'MUGGLE':'http://www.mugglenet.com/mugglecast/mugglecast.rss'}
+# /Config
+
+for key, value in podcasts.items():
+	mkdir(podcastfolder + "/" + key)
+	podcast = feedparser.parse(value)
+	url = podcast['entries'][0]['enclosures'][0]['href']
+	filename = url.split('/')[-1] # get last part of list, the file name
+	if os.path.isfile(podcastfolder + "/" + key + "/" + filename) == False:
+		urllib.urlretrieve(url, podcastfolder + "/" + key + "/" + filename)
