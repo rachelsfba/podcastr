@@ -13,8 +13,8 @@ def mkdir(path):
 # Config
 podcastfolder = '/mnt/Docs/Music'
 podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.rss',
-			'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss', 
-			'MUGGLE':'http://www.mugglenet.com/mugglecast/mugglecast.rss'}
+'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss', 
+'MUGGLE':'http://www.mugglenet.com/mugglecast/mugglecast.rss'}
 # /Config
 
 for key, value in podcasts.items():
