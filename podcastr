@@ -1,6 +1,11 @@
-#!/usr/bin/python
-import feedparser, os, errno
-import urllib
+#!/usr/bin/env python
+
+import feedparser, os, errno, urllib
+try:
+	import termcolor
+	colored = True
+except NameError:
+	colored = False
 
 def mkdir(path):
   try:
@@ -28,7 +33,7 @@ for key, value in podcasts.items():
   fullpath = podcastfolder + "/" + key + "/" + filename
 
   if os.path.isfile(fullpath) == False:
-    print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
+    print "\033[94m" + "Downloading: \033[0m" + filename + " => " + podcastfolder + "/" + key 
     urllib.urlretrieve(url, fullpath)
   elif os.path.isfile(fullpath) == True:
-    print podcast['feed']['title'] + " is up to date."
+    print "\033[94m" + podcast['feed']['title'] + " \033[0mis up to date."

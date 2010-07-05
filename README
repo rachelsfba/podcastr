@@ -28,7 +28,3 @@ Requirements:
 	python 2.5.*
 	urllib module for python (Arch User Repository: python-urljr)
 	feedparser module for python (AUR: python-feedparser)
-	
-	
-Limited support is available by contacting the author at drowned [dot] flame [at] gmail [dot] com. 
-
