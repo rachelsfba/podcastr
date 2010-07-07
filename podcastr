@@ -1,17 +1,11 @@
 #!/usr/bin/env python
 
-import feedparser, os, errno, urllib
-try:
-	import termcolor
-	colored = True
-except NameError:
-	colored = False
+import feedparser, os, sys, errno, urllib
 
 def mkdir(path):
   try:
     os.makedirs(path)
   except OSError as exc: 
-    #
     if exc.errno == errno.EEXIST:
       pass
     else:
@@ -26,14 +20,14 @@ podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.
 
 for key, value in podcasts.items():
 
-  mkdir(podcastfolder + "/" + key)
-  podcast = feedparser.parse(value)
-  url = podcast['entries'][0]['enclosures'][0]['href']
-  filename = url.split('/')[-1] # get last part of list, the file name
-  fullpath = podcastfolder + "/" + key + "/" + filename
+	mkdir(podcastfolder + "/" + key)
+	podcast = feedparser.parse(value)
+	url = podcast['entries'][0]['enclosures'][0]['href']
+	filename = url.split('/')[-1] # get last part of list, the file name
+	fullpath = podcastfolder + "/" + key + "/" + filename
 
-  if os.path.isfile(fullpath) == False:
-    print "\033[94m" + "Downloading: \033[0m" + filename + " => " + podcastfolder + "/" + key 
-    urllib.urlretrieve(url, fullpath)
-  elif os.path.isfile(fullpath) == True:
-    print "\033[94m" + podcast['feed']['title'] + " \033[0mis up to date."
+	if os.path.isfile(fullpath) == False:
+		print "\033[94m" + "Downloading: \033[0m" + filename + " \033[94m=>\033[0m " + podcastfolder + "/" + key 
+		urllib.urlretrieve(url, fullpath)
+	elif os.path.isfile(fullpath) == True:
+		print "\033[94m" + podcast['feed']['title'] + " \033[0mis up to date."
