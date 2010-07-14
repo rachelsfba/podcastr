@@ -22,4 +22,3 @@ urllib module for python (Arch User Repository: `python-urljr`)
 
 feedparser module for python (Arch Official Repositories: `python-feedparser`)
 
-eyeD3 module for python (Arch Official Repositories: `python-eyed3`)
