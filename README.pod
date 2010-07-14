@@ -22,7 +22,3 @@ release.
 	feedparser module for python (AUR: python-feedparser)
   eyeD3 module for python (AUR: python-eyed3)
 
-=cut
-
-1;
-
