@@ -1,9 +1,0 @@
-
-*** Podcastr does not include a configuration file or multiple file download 
-within a podcast in this release. Please edit the file 'podcastr' with the appropriate
-information. ***
-
-Requirements: 
-	python 2.5.*
-	urllib module for python (Arch User Repository: python-urljr)
-	feedparser module for python (AUR: python-feedparser)
