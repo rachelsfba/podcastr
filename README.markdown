@@ -4,7 +4,7 @@ podcastr - A Python podcast updater
 
 # SYNOPSIS 
   
-  podcastr does not use in aguments in this release.
+podcastr does not use arguments in this release.
 
 # NOTICES
 
