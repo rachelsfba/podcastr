@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import feedparser, os, errno, urllib, eyeD3
+import feedparser, os, errno, urllib, 
 
 def mkdir(path):
   try:
