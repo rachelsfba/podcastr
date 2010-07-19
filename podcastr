@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import feedparser, os, errno, urllib, 
+import feedparser, os, errno, urllib 
 
 def mkdir(path):
   try:
@@ -27,7 +27,7 @@ for key, value in podcasts.items():
 	fullpath = podcastfolder + "/" + key + "/" + filename
 
 	if os.path.isfile(fullpath) == False:
-		print "\033[94m" + "Downloading: \033[0m" + filename + " \033[94m=>\033[0m " + podcastfolder + "/" + key 
+		print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
 		urllib.urlretrieve(url, fullpath)
 	elif os.path.isfile(fullpath) == True:
-		print "\033[94m" + podcast['feed']['title'] + " \033[0mis up to date."
+		print podcast['feed']['title'] + " is up to date."
