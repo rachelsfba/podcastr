@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import feedparser, os, errno, urllib 
+import feedparser, os, errno, urllib, subprocess
 
 def mkdir(path):
   try:
@@ -11,23 +11,29 @@ def mkdir(path):
     else:
       raise
 
-# Config
-podcastfolder = '/mnt/Docs/Music'
+""" Config
+----------
+    Figured it is best to copy trapd00r's hierachy... """
+podcastfolder = '/mnt/Music_1'
 podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.rss',
-'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss', 
-'MUGGLE':'http://www.mugglenet.com/mugglecast/mugglecast.rss'}
+'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss',
+'GDGT':'http://feeds.gdgt.com/gdgt/podcast-mp3/',
+'LINUXOUTLAWS':'http://feeds.feedburner.com/linuxoutlaws'}
 # /Config
+
+i = 202;
 
 for key, value in podcasts.items():
 
-	mkdir(podcastfolder + "/" + key)
-	podcast = feedparser.parse(value)
-	url = podcast['entries'][0]['enclosures'][0]['href']
-	filename = url.split('/')[-1] # get last part of list, the file name
-	fullpath = podcastfolder + "/" + key + "/" + filename
+  mkdir(podcastfolder + "/" + key)
+  podcast = feedparser.parse(value)
+  url = podcast['entries'][0]['enclosures'][0]['href']
+  filename = url.split('/')[-1] # get last part of list, the file name
+  fullpath = podcastfolder + "/" + key + "/" + filename
 
-	if os.path.isfile(fullpath) == False:
-		print "Downloading: " + filename + " => " + podcastfolder + "/" + key 
-		urllib.urlretrieve(url, fullpath)
-	elif os.path.isfile(fullpath) == True:
-		print podcast['feed']['title'] + " is up to date."
+  if os.path.isfile(fullpath) == False:
+    print "\033[38;5;%imDownloading: %s => %s/%s" % (i,filename,podcastfolder,key)
+    urllib.urlretrieve(url, fullpath)
+  elif os.path.isfile(fullpath) == True:
+    print "\033[38;5;%im%s is up to date. Latest file: %s" % (i,podcast['feed']['title'],filename)
+  i += 1
