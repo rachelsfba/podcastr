@@ -2,8 +2,8 @@
 
 podcastr - A Python podcast updater
 
-# SYNOPSIS 
-  
+# SYNOPSIS
+
 podcastr does not use arguments in this release.
 
 # NOTICES
@@ -14,9 +14,9 @@ podcastr does not use arguments in this release.
 + The file podcastr must be edited with the appropriate information in this
   release.
 
-# REQUIREMENTS 
-	
-python 2.5+ (Arch Official Repositories: `python`)
+# REQUIREMENTS
+
+python 2.6+ (Arch Official Repositories: `python`)
 
 urllib module for python (Arch User Repository: `python-urljr`)
 

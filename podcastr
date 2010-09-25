@@ -18,6 +18,7 @@ podcastfolder = '/mnt/Music_1'
 podcasts = {'SYSK':'http://www.howstuffworks.com/podcasts/stuff-you-should-know.rss',
 'STDWYTK':'http://www.howstuffworks.com/podcasts/stuff-they-dont-want-you-to-know.rss',
 'GDGT':'http://feeds.gdgt.com/gdgt/podcast-mp3/',
+'QUAD':'http://www.quake-live.tv/data/rss-podcasts.php',
 'LINUXOUTLAWS':'http://feeds.feedburner.com/linuxoutlaws'}
 # /Config
 
